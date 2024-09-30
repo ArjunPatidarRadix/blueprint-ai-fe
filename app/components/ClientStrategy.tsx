@@ -1,5 +1,5 @@
 import React from "react";
-import { ClientDetails } from "./ClientTable";
+import { ClientDetails } from "../models/Client";
 
 const ClientStrategy = ({ details }: { details: ClientDetails }) => {
   return (

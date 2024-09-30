@@ -1,91 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ClientStrategy from "./ClientStrategy";
-
-// Define the structure of a client object
-type Client = {
-  name: string;
-  business: string;
-  industry: string; // Add industry field
-  status: string;
-  lastUpdate: string;
-  strategyStatus: string;
-  details: ClientDetails;
-};
-
-export interface ClientDetails {
-  name: string;
-  businessName: string;
-  status: string;
-  lastUpdate: string;
-  strategyStatus: string;
-  identity: string;
-  goals: string;
-  currentStrategy: string;
-  progressCompleted: number;
-}
-
-// Sample clients data
-const clients: Client[] = [
-  {
-    name: "Client 1",
-    business: "B1",
-    industry: "Tech",
-    status: "Active",
-    lastUpdate: "2024-09-28",
-    strategyStatus: "In progress",
-    details: {
-      name: "Client 1",
-      businessName: "B1",
-      status: "Active",
-      lastUpdate: "2 days ago",
-      strategyStatus: "In Progress",
-      identity: "Who we are: Company A, focused on sustainability.",
-      goals: "To expand market reach by 25% in 3 years.",
-      currentStrategy: "Strategy 1: Increase digital marketing efforts.",
-      progressCompleted: 45,
-    },
-  },
-  {
-    name: "Client 2",
-    business: "B2",
-    industry: "Finance",
-    status: "Inactive",
-    lastUpdate: "2024-09-25",
-    strategyStatus: "In progress",
-    details: {
-      name: "Client 2",
-      businessName: "B2",
-      status: "Active",
-      lastUpdate: "1 hour ago",
-      strategyStatus: "In Progress",
-      identity: "Who we are: Company B, focused on innovation.",
-      goals: "Launch new product line by next quarter.",
-      currentStrategy: "Strategy 2: Build strategic partnerships.",
-      progressCompleted: 85,
-    },
-  },
-  {
-    name: "Client 3",
-    business: "B3",
-    industry: "Healthcare",
-    status: "Active",
-    lastUpdate: "2024-09-29",
-    strategyStatus: "Completed",
-    details: {
-      name: "Client 3",
-      businessName: "B2",
-      status: "Active",
-      lastUpdate: "1 hour ago",
-      strategyStatus: "In Progress",
-      identity: "Who we are: Company B, focused on innovation.",
-      goals: "Launch new product line by next quarter.",
-      currentStrategy: "Strategy 2: Build strategic partnerships.",
-      progressCompleted: 100,
-    },
-  },
-  // Add more clients as needed
-];
+import { clients } from "../data/dummyData";
 
 const ClientTable: React.FC = () => {
   const [filterText, setFilterText] = useState(""); // For name filter
@@ -173,7 +89,6 @@ const ClientTable: React.FC = () => {
                 </option>
               );
             })}
-            {/* Add more industries as needed */}
           </select>
 
           <select
