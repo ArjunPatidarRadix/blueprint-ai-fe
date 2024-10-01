@@ -1,10 +1,8 @@
-// components/Header.js
-
 import { FaBell } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <header className="flex justify-between items-center p-4 bg-gray-100 shadow">
+    <header className="flex justify-between items-center p-4 bg-gray-100 mb-5 shadow-md">
       {/* Search Bar */}
       <div className="flex flex-grow justify-start">
         <div className="relative">
@@ -13,7 +11,7 @@ const Header = () => {
             placeholder="Dashboards..."
           />
           <button
-            className="absolute top-1 right-1 flex items-center rounded bg-slate-800 py-1 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="absolute top-1 right-1 flex items-center rounded bg-accentColor py-1 px-2.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"
           >
             <svg
@@ -23,9 +21,9 @@ const Header = () => {
               className="w-4 h-4 mr-2"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
             Search
@@ -48,7 +46,6 @@ const Header = () => {
           <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
             3
           </span>{" "}
-          {/* Replace with dynamic notification count */}
         </button>
       </div>
     </header>
