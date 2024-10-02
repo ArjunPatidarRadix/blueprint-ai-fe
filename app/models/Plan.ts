@@ -1,15 +1,14 @@
-export type Client = {
+export type Plan = {
     srNo: number;
-    name: string;
-    business: string;
-    industry: string;
+    planName: string;
+    organization: string;
+    createdDate: string;
+    createdBy: string;
     status: string;
-    lastUpdate: string;
-    strategyStatus: string;
-    details: ClientDetails;
+    // details: PlanDetails;
   };
 
-  export interface ClientDetails {
+  export interface PlanDetails {
     name: string;
     businessName: string;
     status: string;
