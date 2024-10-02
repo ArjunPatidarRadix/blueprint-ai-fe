@@ -2,6 +2,7 @@ import { Client } from "../models/Client";
 
 export const clients: Client[] = [
     {
+      srNo: 1,
       name: "Client 1",
       business: "B1",
       industry: "Tech",
@@ -21,6 +22,7 @@ export const clients: Client[] = [
       },
     },
     {
+      srNo: 2,
       name: "Client 2",
       business: "B2",
       industry: "Finance",
@@ -40,6 +42,7 @@ export const clients: Client[] = [
       },
     },
     {
+      srNo: 3,
       name: "Client 3",
       business: "B3",
       industry: "Healthcare",

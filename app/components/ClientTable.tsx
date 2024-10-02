@@ -110,9 +110,15 @@ const ClientTable: React.FC = () => {
           <tr>
             <th
               className="px-4 py-3 border cursor-pointer"
+              onClick={() => handleSort("srNo")}
+            >
+              Sr No {sortField === "srNo" && (sortOrder === "asc" ? "↑" : "↓")}
+            </th>
+            <th
+              className="px-4 py-3 border cursor-pointer"
               onClick={() => handleSort("name")}
             >
-              Client Name{" "}
+              Plan Name{" "}
               {sortField === "name" && (sortOrder === "asc" ? "↑" : "↓")}
             </th>
             <th className="px-4 py-3 border">Business Name</th>
@@ -153,6 +159,7 @@ const ClientTable: React.FC = () => {
                   }
                 }}
               >
+                <td className="px-4 py-3 border">{client.srNo}</td>
                 <td className="px-4 py-3 border">{client.name}</td>
                 <td className="px-4 py-3 border">{client.business}</td>
                 <td className="px-4 py-3 border">{client.industry}</td>
