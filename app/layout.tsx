@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
+import SideNav from "./components/SideNav";
 
 export const metadata: Metadata = {
   title: "Blue Print a4i",
@@ -15,8 +16,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
+        {/* <Header />
+        {children} */}
+
+        <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+          <div className="w-full flex-none md:w-64">
+            <SideNav />
+          </div>
+          <div className="flex-grow md:overflow-y-auto ">
+            <Header />
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );

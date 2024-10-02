@@ -1,4 +1,6 @@
 import { FaBell } from "react-icons/fa";
+import avatar from "../icon/avatar.png";
+import Image from "next/image";
 
 const Header = () => {
   return (
@@ -34,12 +36,12 @@ const Header = () => {
       {/* Profile Section */}
       <div className="flex items-center space-x-4">
         <div className="flex items-center">
-          <img
-            src="/path-to-your-profile-picture.jpg" // Replace with your profile picture path
+          <Image
+            src={avatar}
             alt="Profile"
             className="w-10 h-10 rounded-full"
           />
-          <span className="ml-2 font-semibold">Your Name</span>
+          <span className="ml-2 font-semibold">Max</span>
         </div>
         <button className="relative">
           <FaBell className="text-gray-700" size={24} />

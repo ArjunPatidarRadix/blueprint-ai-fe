@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from '../components/Button';
+import Button from "@/app/components/Button";
+import React from "react";
 
 interface StatementProps {
   title: string;
@@ -12,7 +12,7 @@ const Statement: React.FC<StatementProps> = ({
   title,
   isStatementAvailable = false,
   onViewClick,
-  statementFor
+  statementFor,
 }) => {
   return (
     <div className="p-4 m-4 w-64 h-40 border text-center inline-block flex-col justify-between">
@@ -24,12 +24,20 @@ const Statement: React.FC<StatementProps> = ({
               <span className="upload-icon text-3xl">📤</span>
               <span className="upload-text text-lg ml-2">View File</span>
             </label>
-            {statementFor === 'Goal' && (
-              <Button label="Lag Measure" onClick={onViewClick} type="button" />
+            {statementFor === "Goal" && (
+              <Button
+                label="Lag Measure"
+                onClick={() => onViewClick && onViewClick()}
+                type="button"
+              />
             )}
           </div>
         ) : (
-          <Button label="Create Statement" onClick={onViewClick} type="button" />
+          <Button
+            label="Create Statement"
+            onClick={() => onViewClick && onViewClick()}
+            type="button"
+          />
         )}
       </div>
     </div>
