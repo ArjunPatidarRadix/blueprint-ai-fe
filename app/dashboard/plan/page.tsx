@@ -1,4 +1,5 @@
 import PlanTable from "@/app/components/PlanTable";
+import RightNav from "@/app/components/RightNav/RightNav";
 import React, { useEffect } from "react";
 
 export default function page() {
@@ -7,9 +8,7 @@ export default function page() {
       <div className="w-5/6">
         <PlanTable />
       </div>
-      <div className="w-1/6 pb-8 grow rounded-md bg-gray-50">
-        Right Section here
-      </div>
+      <RightNav />
     </div>
   );
 }

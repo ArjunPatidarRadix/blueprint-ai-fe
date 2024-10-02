@@ -1,28 +1,31 @@
 import React, { useState } from "react";
 import Statement from "./Statement";
 import Button from "@/app/components/Button";
+import Page from "../page";
+import { useRouter } from "next/navigation";
 
 const Identity: React.FC = () => {
+  const router = useRouter();
   const [identityElements, setIdentityElements] = useState([
     {
       title: "Identity",
       isStatementAvailable: false,
-      onViewClick: () => alert("I1"),
+      onViewClick: () => router.push("/StatementDetail?From=Identity"),
     },
     {
       title: "Vision",
       isStatementAvailable: true,
-      onViewClick: () => alert("I1"),
+      onViewClick: () => router.push("/StatementDetail?From=Vision"),
     },
     {
       title: "Mission",
       isStatementAvailable: false,
-      onViewClick: () => alert("I1"),
+      onViewClick: () => router.push("/StatementDetail?From=Mission"),
     },
     {
       title: "Value",
       isStatementAvailable: false,
-      onViewClick: () => alert("I1"),
+      onViewClick: () => router.push("/StatementDetail?From=Value"),
     },
   ]);
 

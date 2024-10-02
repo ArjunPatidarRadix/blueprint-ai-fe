@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import Statement from "./Statement";
 import Button from "@/app/components/Button";
+import { useRouter } from "next/navigation";
 
 const Goal: React.FC = () => {
+  const router = useRouter();
   const [goalElements, setGoalElements] = useState([
     {
       title: "Culture",
       isStatementAvailable: false,
-      onViewClick: () => alert("I2"),
+      onViewClick: () => router.push("/StatementDetail?From=Culture"),
     },
     {
       title: "Outcome",
       isStatementAvailable: false,
-      onViewClick: () => alert("I2"),
+      onViewClick: () => router.push("/StatementDetail?From=Outcome"),
     },
     {
       title: "Position",
       isStatementAvailable: true,
-      onViewClick: () => alert("I2"),
+      onViewClick: () => router.push("/StatementDetail?From=Position"),
     },
   ]);
 
