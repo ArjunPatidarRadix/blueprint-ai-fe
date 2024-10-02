@@ -1,9 +1,14 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 import ClientStrategy from "./ClientStrategy";
 import { clients } from "../data/dummyData";
+import Button from "../components/Button";
 
 const ClientTable: React.FC = () => {
+
+  const router = useRouter();
+
   const [filterText, setFilterText] = useState(""); // For name filter
   const [filterIndustry, setFilterIndustry] = useState(""); // For industry filter
   const [filterStatus, setFilterStatus] = useState(""); // For status filter
@@ -62,9 +67,17 @@ const ClientTable: React.FC = () => {
     setFilterStatus(value);
   };
 
+  const addPlan = () => {
+    router.push('/plan'); // Navigate to the new page
+  };
+  
+
   return (
     <div className="p-6 flex-1 mx-36">
-      <h1 className="text-xl font-bold mb-4">Client Management Dashboard</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-xl font-bold">Client Management Dashboard</h1>
+        <Button label="Add Plan" onClick={addPlan} />
+      </div>
 
       {/* Filter Section */}
       <div className="flex flex-col md:flex-row gap-4 mb-6 justify-between">
