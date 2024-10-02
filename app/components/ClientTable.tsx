@@ -73,7 +73,7 @@ const ClientTable: React.FC = () => {
   
 
   return (
-    <div className="p-6 flex-1 mx-36">
+    <div className="p-6 flex-1 ">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-bold">Client Management Dashboard</h1>
         <Button label="Add Plan" onClick={addPlan} />
@@ -109,7 +109,7 @@ const ClientTable: React.FC = () => {
             value={filterStatus}
             onChange={(e) => handleStatusFilter(e.target.value)}
           >
-            <option value="">All Statuses</option>
+            <option value="">All</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
             <option value="Completed">Completed</option>

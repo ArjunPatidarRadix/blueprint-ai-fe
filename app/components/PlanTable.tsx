@@ -65,26 +65,27 @@ const PlanTable: React.FC = () => {
   };
 
   return (
-    <div className="p-6 flex-1 mx-36">
+    <div className="p-6 flex-1">
       <div className="flex flex-row items-center mb-5">
-        <p className="text-lg text-gray-900 dark:text-white cursor-pointer">
-          Dashboard
-        </p>
-        <IoIosArrowForward />
-        <p className="text-lg text-gray-900 dark:text-white cursor-pointer">
-          Plan
-        </p>
-      </div>
+      <p className="font-bold text-lg dark:text-white cursor-pointer">
+        Dashboard
+      </p>
+      <IoIosArrowForward className="mx-2" /> {/* Add margin to the icon for spacing */}
+      <p className="font-bold text-lg text-gray-900 dark:text-white cursor-pointer">
+        Plan
+      </p>
+      <button
+        className="ml-auto px-4 py-2 bg-accentColor text-white rounded-md" // Use ml-auto to push the button to the right
+        onClick={() => {
+          router.replace("/dashboard/createPlan");
+        }}
+      >
+        New Plan
+      </button>
+    </div>
       <div className="flex flex-row justify-between mb-5">
         <h1 className="text-xl font-bold mb-4">Planning</h1>
-        <button
-          className="px-4 py-2 bg-accentColor text-white rounded-md"
-          onClick={() => {
-            router.replace("/dashboard/createPlan");
-          }}
-        >
-          New Plan
-        </button>
+        
       </div>
       {/* Filter Section */}
       <div className="flex flex-col md:flex-row gap-4 mb-6 justify-between">
@@ -94,7 +95,7 @@ const PlanTable: React.FC = () => {
             value={filterStatus}
             onChange={(e) => handleStatusFilter(e.target.value)}
           >
-            <option value="">All Statuses</option>
+            <option value="">All</option>
             <option value="In progress">In progress</option>
             <option value="Inactive">Inactive</option>
             <option value="Completed">Completed</option>

@@ -10,8 +10,9 @@ export default function Page() {
     router.replace("/dashboard/plan");
   }, []);
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center">
+    <div className="min-h-screen bg-gray-100 flex justify-start">
       <ClientTable />
     </div>
+
   );
 }
