@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import { plans } from "../data/dummyDataPlan";
 import { IoIosArrowForward } from "react-icons/io";
 import Pagination from "./Pagination";
+import { useRouter } from "next/navigation";
 
 const PlanTable: React.FC = () => {
+  const router = useRouter();
+
   const [filterText, setFilterText] = useState(""); // For name filter
   const [filterOrganization, setFilterOrganization] = useState(""); // For organization filter
   const [filterStatus, setFilterStatus] = useState(""); // For status filter
@@ -74,7 +77,12 @@ const PlanTable: React.FC = () => {
       </div>
       <div className="flex flex-row justify-between mb-5">
         <h1 className="text-xl font-bold mb-4">Planning</h1>
-        <button className="px-4 py-2 bg-accentColor text-white rounded-md">
+        <button
+          className="px-4 py-2 bg-accentColor text-white rounded-md"
+          onClick={() => {
+            router.replace("/dashboard/createPlan");
+          }}
+        >
           New Plan
         </button>
       </div>
