@@ -1,4 +1,5 @@
 import React from "react";
+import { ColorEnum } from "../Enums/ColouEnums";
 
 // Define the props interface
 interface ButtonProps {
@@ -18,10 +19,10 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       type={type}
-      className={`${style} flex items-center justify-center px-6 py-2 bg-[#f3f1ee] text-gray-800 border border-black rounded-full transition duration-200 hover:bg-black hover:text-white`}
+      className={`${style} flex items-center justify-center px-6 py-2 text-gray-800 border border-black rounded-full transition duration-200 bg-[${ColorEnum.LIGHT_GRAY_BLUE}] hover:bg-black hover:text-white`}
       onClick={onClick}
     >
-      {label} <span className="ml-2"> →</span>
+      {label}
     </button>
   );
 };

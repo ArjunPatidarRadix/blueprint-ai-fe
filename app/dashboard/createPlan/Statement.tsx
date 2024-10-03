@@ -1,49 +1,47 @@
-import Button from "@/app/components/Button";
-import React from "react";
+
+import { ColorEnum } from "@/app/Enums/ColouEnums";
+import React, { useState } from "react";
+import { CiEdit } from "react-icons/ci";
 
 interface StatementProps {
   title: string;
-  isStatementAvailable?: boolean;
-  onViewClick?: () => void;
-  statementFor: string;
+  value: string;
 }
 
 const Statement: React.FC<StatementProps> = ({
   title,
-  isStatementAvailable = false,
-  onViewClick,
-  statementFor,
+  value,
 }) => {
+
+  const [canEdit, setCanEdit] = useState(false);
+  const editAccess = (editAccess) => {
+    setCanEdit(!editAccess);
+  }
+
   return (
-    <div className="p-4 m-4 w-64 h-40 border text-center inline-block flex-col justify-between">
-      <div className="text-lg font-bold">{title}</div>
-      <div className="p-2 flex-grow flex items-center justify-center">
-        {isStatementAvailable ? (
-          <div className={`flex flex-col items-center space-y-2`} >
-            <label className="upload-label cursor-pointer flex items-center justify-center">
-              <span className="upload-icon text-3xl">📤</span>
-              <span className="upload-text text-lg ml-2">View File</span>
-            </label>
-            {statementFor === "Goal" && (
-              <Button
-                label="Lag Measure"
-                onClick={() => onViewClick && onViewClick()}
-                type="button"
-              />
-            )}
-          </div>
-        ) : (
-          <div className={`flex flex-col h-full justify-end`}> 
-          <div className="pt-8" />
-            <Button
-              label="Create Statement"
-              onClick={() => onViewClick && onViewClick()}
-              type="button"
-            />
-          </div>
-        )}
+    <div className="flex flex-wrap justify-center gap-6">
+      <div style={{ backgroundColor: ColorEnum.LIGHT_GRAY_BLUE }} className="relative w-96 shadow-sm  border-slate-200 rounded-lg p-3 pb-6">
+        <div className="flex justify-center mb-1 mt-2">
+        </div>
+
+        <div className="flex justify-between items-center mb-3">
+          <h5 className="text-slate-800 text-2xl font-semibold">{title}</h5>
+          <button onClick={() => editAccess(canEdit)} className="ml-auto">
+            <CiEdit className="text-3xl cursor-pointer" />
+          </button>
+        </div>
+        <div
+          className="p-3 mt-5 border-t border-slate-100 text-center max-h-40 min-h-[15.5rem] overflow-y-auto [&::-webkit-scrollbar-thumb]:rounded-xl [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:rounded-xl [&::-webkit-scrollbar-track]:bg-slate-100"
+          contentEditable={canEdit} // This makes the section editable
+          suppressContentEditableWarning={true} // React warning suppression
+        >
+          <p className="block text-left text-slate-600 leading-normal font-light mb-4 max-w-lg">
+            {value}
+          </p>
+        </div>
       </div>
     </div>
+
   );
 };
 

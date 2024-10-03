@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 const PlanTable: React.FC = () => {
   const router = useRouter();
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [planName, setPlanName] = useState("");
   const [filterText, setFilterText] = useState(""); // For name filter
   const [filterOrganization, setFilterOrganization] = useState(""); // For organization filter
   const [filterStatus, setFilterStatus] = useState(""); // For status filter
@@ -64,6 +66,11 @@ const PlanTable: React.FC = () => {
     setFilterStatus(value);
   };
 
+  const handleCreatePlan = () => {
+    setIsPopupOpen(false);
+    router.replace(`/dashboard/createPlan?planName=${encodeURIComponent(planName)}`);
+  };
+
   return (
     <div className="p-6 flex-1">
       <div className="flex flex-row items-center mb-5">
@@ -75,14 +82,47 @@ const PlanTable: React.FC = () => {
         <p className="font-bold text-lg text-gray-900 dark:text-white cursor-pointer">
           Plan
         </p>
-        <button
-          className="ml-auto px-4 py-2 bg-accentColor text-white rounded-md" // Use ml-auto to push the button to the right
-          onClick={() => {
-            router.replace("/dashboard/createPlan");
-          }}
-        >
-          New Plan
-        </button>
+
+        <div className="flex justify-between">
+          <button
+            className="ml-auto px-4 py-2 bg-accentColor text-white rounded-md"
+            onClick={() => setIsPopupOpen(true)}
+          >
+            New Plan
+          </button>
+
+          {/* Popup Modal here */}
+          {isPopupOpen && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+              <div className="bg-white p-6 rounded-md shadow-md w-1/3">
+                <h2 className="text-xl font-semibold mb-4">Create a New Plan</h2>
+                <input
+                  type="text"
+                  value={planName}
+                  onChange={(e) => setPlanName(e.target.value)}
+                  placeholder="Enter Plan Name"
+                  className="border border-gray-300 p-2 w-full rounded-md mb-4"
+                />
+                <div className="flex justify-end space-x-2">
+                  <button
+                    className="px-4 py-2 bg-gray-300 rounded-md"
+                    onClick={() => setIsPopupOpen(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="px-4 py-2 bg-blue-500 text-white rounded-md"
+                    onClick={handleCreatePlan}
+                  >
+                    Create Plan
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+
       </div>
       {/* Filter Section */}
       <div className="flex flex-col md:flex-row gap-4 mb-6 justify-between">

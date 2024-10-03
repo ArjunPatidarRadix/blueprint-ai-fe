@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import Statement from "./Statement";
 import Button from "@/app/components/Button";
-import { useRouter } from "next/navigation";
+
+import { GoalProperty } from '../../Enums/PlanPropertyEnums'
 
 const Goal: React.FC = () => {
-  const router = useRouter();
   const [goalElements, setGoalElements] = useState([
     {
       title: "Culture",
-      isStatementAvailable: false,
-      onViewClick: () => router.push("/StatementDetail?From=Culture"),
+      value: GoalProperty.CULTURE,
     },
     {
       title: "Outcome",
-      isStatementAvailable: false,
-      onViewClick: () => router.push("/StatementDetail?From=Outcome"),
+      value: GoalProperty.OUTCOME,
     },
     {
       title: "Position",
-      isStatementAvailable: true,
-      onViewClick: () => router.push("/StatementDetail?From=Position"),
+      value: GoalProperty.POSITION,
     },
   ]);
 
@@ -28,25 +25,25 @@ const Goal: React.FC = () => {
       ...goalElements,
       {
         title: "Custom Field",
-        isStatementAvailable: false,
-        onViewClick: () => alert(`Customfield clicked`),
+        value: '',
       },
     ]);
   };
 
   return (
     <div>
-      <div className="mb-4">
+      <div className="mb-4 flex justify-end mr-20">
         {goalElements.length < 7 ? (
           <Button label="+ Add" onClick={addStatement} type="button" />
         ) : null}
       </div>
 
-      <div>
+      <div className="flex flex-wrap justify-center gap-6">
         {goalElements.map((element, index) => (
           <Statement
             key={index}
             title={element.title}
+            value={element.value}
             isStatementAvailable={element.isStatementAvailable}
             onViewClick={element.onViewClick}
             statementFor="Goal"

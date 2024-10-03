@@ -15,12 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={{ overflowY: "hidden" }}>
+      <body>
         <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
           <div className="w-full flex-none md:w-64">
             <SideNav />
           </div>
-          <div className="flex-grow md:overflow-y-hidden ">
+          <div className="flex-grow">
             <Header />
             {children}
           </div>
