@@ -1,31 +1,43 @@
 import React, { useState } from "react";
 import Statement from "./Statement";
 import Button from "@/app/components/Button";
-import Page from "../page";
-import { useRouter } from "next/navigation";
+import Modal from "./StatementModal/Modal";
 
 const Identity: React.FC = () => {
-  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
+  const [modalName, setModalName] = useState("");
   const [identityElements, setIdentityElements] = useState([
     {
       title: "Identity",
       isStatementAvailable: false,
-      onViewClick: () => router.push("/StatementDetail?From=Identity"),
+      onViewClick: () => {
+        setModalName("identity");
+        setShowModal(true);
+      },
     },
     {
       title: "Vision",
       isStatementAvailable: true,
-      onViewClick: () => router.push("/StatementDetail?From=Vision"),
+      onViewClick: () => {
+        setModalName("vision");
+        setShowModal(true);
+      },
     },
     {
       title: "Mission",
       isStatementAvailable: false,
-      onViewClick: () => router.push("/StatementDetail?From=Mission"),
+      onViewClick: () => {
+        setModalName("mission");
+        setShowModal(true);
+      },
     },
     {
       title: "Value",
       isStatementAvailable: false,
-      onViewClick: () => router.push("/StatementDetail?From=Value"),
+      onViewClick: () => {
+        setModalName("value");
+        setShowModal(true);
+      },
     },
   ]);
 
@@ -56,6 +68,14 @@ const Identity: React.FC = () => {
           statementFor="Identity"
         />
       ))}
+      <Modal
+        from={modalName}
+        isVisible={showModal}
+        setIsVisible={() => {
+          setShowModal(false);
+          setModalName("");
+        }}
+      />
     </div>
   );
 };

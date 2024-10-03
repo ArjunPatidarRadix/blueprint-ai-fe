@@ -1,25 +1,35 @@
 import React, { useState } from "react";
 import Statement from "./Statement";
 import Button from "@/app/components/Button";
-import { useRouter } from "next/navigation";
+import Modal from "./StatementModal/Modal";
 
 const Goal: React.FC = () => {
-  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
+  const [modalName, setModalName] = useState("");
   const [goalElements, setGoalElements] = useState([
     {
       title: "Culture",
       isStatementAvailable: false,
-      onViewClick: () => router.push("/StatementDetail?From=Culture"),
+      onViewClick: () => {
+        setModalName("culture");
+        setShowModal(true);
+      },
     },
     {
       title: "Outcome",
       isStatementAvailable: false,
-      onViewClick: () => router.push("/StatementDetail?From=Outcome"),
+      onViewClick: () => {
+        setModalName("outcome");
+        setShowModal(true);
+      },
     },
     {
       title: "Position",
       isStatementAvailable: true,
-      onViewClick: () => router.push("/StatementDetail?From=Position"),
+      onViewClick: () => {
+        setModalName("position");
+        setShowModal(true);
+      },
     },
   ]);
 
@@ -53,6 +63,14 @@ const Goal: React.FC = () => {
           />
         ))}
       </div>
+      <Modal
+        from={modalName}
+        isVisible={showModal}
+        setIsVisible={() => {
+          setShowModal(false);
+          setModalName("");
+        }}
+      />
     </div>
   );
 };
