@@ -19,3 +19,4 @@ export type Plan = {
     currentStrategy: string;
     progressCompleted: number;
   }
+
