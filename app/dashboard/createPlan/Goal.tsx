@@ -1,21 +1,39 @@
 import React, { useState } from "react";
 import Statement from "./Statement";
 import Button from "@/app/components/Button";
+import Modal from "./StatementModal/Modal";
 
-import { GoalProperty } from '../../Enums/PlanPropertyEnums'
+import { GoalProperty } from "../../Enums/PlanPropertyEnums";
 
 const Goal: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalName, setModalName] = useState("");
   const [goalElements, setGoalElements] = useState([
     {
       title: "Culture",
+      isStatementAvailable: false,
+      onViewClick: () => {
+        setModalName("culture");
+        setShowModal(true);
+      },
       value: GoalProperty.CULTURE,
     },
     {
       title: "Outcome",
+      isStatementAvailable: false,
+      onViewClick: () => {
+        setModalName("outcome");
+        setShowModal(true);
+      },
       value: GoalProperty.OUTCOME,
     },
     {
       title: "Position",
+      isStatementAvailable: true,
+      onViewClick: () => {
+        setModalName("position");
+        setShowModal(true);
+      },
       value: GoalProperty.POSITION,
     },
   ]);
@@ -25,7 +43,7 @@ const Goal: React.FC = () => {
       ...goalElements,
       {
         title: "Custom Field",
-        value: '',
+        value: "",
       },
     ]);
   };
@@ -50,6 +68,14 @@ const Goal: React.FC = () => {
           />
         ))}
       </div>
+      <Modal
+        from={modalName}
+        isVisible={showModal}
+        setIsVisible={() => {
+          setShowModal(false);
+          setModalName("");
+        }}
+      />
     </div>
   );
 };

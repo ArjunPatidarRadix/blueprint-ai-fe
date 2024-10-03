@@ -37,7 +37,9 @@ export default function Home() {
         createdDate: new Date().toISOString().slice(0, 10),
       };
 
-      router.push("/dashboard/createPlan");
+      router.push(
+        `/dashboard/createPlan?planName=${newPlan.planName}&organization=${newPlan.organization}`
+      );
 
       // Reset form, errors, and close modal
       setNewPlan({ planName: "", organization: "" });

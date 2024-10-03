@@ -68,7 +68,10 @@ const PlanTable: React.FC = () => {
 
   const handleCreatePlan = () => {
     setIsPopupOpen(false);
-    router.replace(`/dashboard/createPlan?planName=${encodeURIComponent(planName)}`);
+    alert(planName);
+    router.replace(
+      `/dashboard/createPlan?planName=${encodeURIComponent(planName)}`
+    );
   };
 
   return (
@@ -82,7 +85,6 @@ const PlanTable: React.FC = () => {
         <p className="font-bold text-lg text-gray-900 dark:text-white cursor-pointer">
           Plan
         </p>
-
         <div className="flex justify-between">
           <button
             className="ml-auto px-4 py-2 bg-accentColor text-white rounded-md"
@@ -95,7 +97,9 @@ const PlanTable: React.FC = () => {
           {isPopupOpen && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
               <div className="bg-white p-6 rounded-md shadow-md w-1/3">
-                <h2 className="text-xl font-semibold mb-4">Create a New Plan</h2>
+                <h2 className="text-xl font-semibold mb-4">
+                  Create a New Plan
+                </h2>
                 <input
                   type="text"
                   value={planName}
@@ -121,8 +125,6 @@ const PlanTable: React.FC = () => {
             </div>
           )}
         </div>
-
-
       </div>
       {/* Filter Section */}
       <div className="flex flex-col md:flex-row gap-4 mb-6 justify-between">
@@ -210,7 +212,14 @@ const PlanTable: React.FC = () => {
                 <td className="px-4 py-3 border-b">{plans.createdBy}</td>
                 <td className="px-4 py-3 border-b">{plans.status}</td>
                 <td className="px-4 py-3 border-b">
-                  <button className="px-4 py-2 bg-accentColor text-white rounded-md">
+                  <button
+                    className="px-4 py-2 bg-accentColor text-white rounded-md"
+                    onClick={() => {
+                      router.push(
+                        `/dashboard/createPlan?planName=${plans.planName}&organization=${plans.organization}`
+                      );
+                    }}
+                  >
                     View Plan
                   </button>
                 </td>

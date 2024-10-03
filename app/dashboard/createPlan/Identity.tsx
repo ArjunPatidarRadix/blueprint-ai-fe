@@ -1,24 +1,43 @@
 import React, { useState } from "react";
 import Statement from "./Statement";
 import Button from "@/app/components/Button";
-import { IdentityProperty } from '../../Enums/PlanPropertyEnums';
+import Modal from "./StatementModal/Modal";
+import { IdentityProperty } from "../../Enums/PlanPropertyEnums";
 
 const Identity: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalName, setModalName] = useState("");
   const [identityElements, setIdentityElements] = useState([
     {
-      title: 'Identity',
+      title: "Identity",
+      onViewClick: () => {
+        setModalName("identity");
+        setShowModal(true);
+      },
       values: IdentityProperty.IDENTITY,
     },
     {
       title: "Vision",
+      onViewClick: () => {
+        setModalName("vision");
+        setShowModal(true);
+      },
       values: IdentityProperty.VISION,
     },
     {
       title: "Mission",
+      onViewClick: () => {
+        setModalName("mission");
+        setShowModal(true);
+      },
       values: IdentityProperty.MISSION,
     },
     {
       title: "Value",
+      onViewClick: () => {
+        setModalName("value");
+        setShowModal(true);
+      },
       values: IdentityProperty.VALUE,
     },
   ]);
@@ -42,7 +61,11 @@ const Identity: React.FC = () => {
     <div>
       <div className="mb-4 flex justify-end mr-20">
         {identityElements.length < 7 ? (
-          <Button label="+ Add" onClick={() => setIsModalOpen(true)} type="button" />
+          <Button
+            label="+ Add"
+            onClick={() => setIsModalOpen(true)}
+            type="button"
+          />
         ) : null}
       </div>
       <div className="flex flex-wrap justify-center gap-6">
@@ -51,9 +74,19 @@ const Identity: React.FC = () => {
             key={index} // Ensure to add a unique key
             title={element.title}
             value={element.values}
+            onViewClick={element.onViewClick}
           />
         ))}
       </div>
+
+      <Modal
+        from={modalName}
+        isVisible={showModal}
+        setIsVisible={() => {
+          setShowModal(false);
+          setModalName("");
+        }}
+      />
 
       {/* Modal for title input */}
       {isModalOpen && (

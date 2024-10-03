@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { plans } from "../data/dummyDataPlan";
 import { IoMdAddCircle } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
 const statuses = ["All", "In progress", "Completed", "Inactive"];
 
@@ -12,7 +13,7 @@ export default function PlanBoard({
 }) {
   const [activeTab, setActiveTab] = useState("All");
   const [filterText, setFilterText] = useState(""); // For name filter
-
+  const router = useRouter();
   // Filter plans based on the selected filters
   const filteredPlansByText = plans.filter((plans) => {
     return plans.planName.toLowerCase().includes(filterText.toLowerCase());
@@ -117,7 +118,14 @@ export default function PlanBoard({
                 </span>
               </div>
             </div>
-            <button className="bg-greenColor text-white px-4 py-2 mt-6 w-full rounded-md hover:bg-greenColorDark transition-colors">
+            <button
+              className="bg-greenColor text-white px-4 py-2 mt-6 w-full rounded-md hover:bg-greenColorDark transition-colors"
+              onClick={() => {
+                router.push(
+                  `/dashboard/createPlan?planName=${plan.planName}&organization=${plan.organization}`
+                );
+              }}
+            >
               View Plan
             </button>
           </div>
