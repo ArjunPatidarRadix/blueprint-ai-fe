@@ -5,9 +5,21 @@
 :root {
   --background: #F8F6F4;
   --foreground: #171717;
-  --accentColor: #6D9ABC;
+  --accentColor: #82B1CC;
+  --accentColorDark: #5B7C92;
   --lightColor: #87a9c4b9;
+  --lightGreen: #C2C49A;
+  --greyColor: #898989;
+  --silverColor: #DFE5EF;
 
+  --pinkColor: #B597AC;
+  --pinkColorDark: #63575B;
+  --goldColor: #BFA583;
+  --goldColorDark: #947C66;
+  --blueColor: #87B5D1;
+  --blueColorDark: #5E7F95;
+  --greenColor: #8E9879;
+  --greenColorDark: #5C6050;
 }
 
 body {
