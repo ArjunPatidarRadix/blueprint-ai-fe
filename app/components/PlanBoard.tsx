@@ -105,7 +105,7 @@ export default function PlanBoard({
                 <label className="block text-gray-500 text-sm font-semibold mb-1">
                   Organization
                 </label>
-                <span className=" text-blueColorDark text-md font-semibold py-1 px-3 rounded-lg">
+                <span className=" text-pinkColorDark text-md font-semibold py-1 px-3 rounded-lg">
                   {plan.organization}
                 </span>
               </div>

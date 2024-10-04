@@ -33,28 +33,27 @@ const TabsComponent: React.FC = () => {
 
   return (
     <div className="min-h-screen flex justify-center">
-      <div className="w-5/6">
+      <div className="w-full">
         <div
           className="h-full mx-auto p-4"
           style={{ backgroundColor: ColorEnum.OFF_WHITE }}
         >
-          <div className="flex justify-between items-center mb-3">
-            <div className="text-lg">
-              <span className="">Plan Name: </span>
-              <span className="font-bold">{planName || "N/A"}</span>
-            </div>
-            <div className="text-lg text-center flex-1">
-              <span className="">Organization Name: </span>
-              <span className="font-bold">{organization || "N/A"}</span>
-            </div>
-            <div className="text-lg text-right">
-              <span className="">Created On: </span>
-              <span className="font-bold">03-10-24</span>
-            </div>
+          <div className="flex mb-6">
+            <p className="font-bold">
+              <span className="text-blueColor text-xl">
+                {planName || "N/A"}
+              </span>
+              {", "}
+              <span className="text-pinkColor text-xl">
+                {organization || "N/A"}
+              </span>
+              {", "}
+              <span className="italic font-normal">Created at 03-10-24</span>
+            </p>
           </div>
 
           {/* Tab buttons */}
-          <div className="flex text-4xl justify-start items-center mb-4 gap-16">
+          <div className="flex text-3xl justify-start items-center gap-5">
             <button
               className={`pb-2 px-4 ${
                 activeTab === "identity"
@@ -88,7 +87,15 @@ const TabsComponent: React.FC = () => {
           </div>
 
           {/* Render the content of the active tab */}
-          <div className="mt-4">{renderActiveTab()}</div>
+          <div
+            className="mt-4 overflow-y-auto"
+            style={{
+              maxHeight: "75vh",
+              scrollbarWidth: "none",
+            }}
+          >
+            {renderActiveTab()}
+          </div>
         </div>
       </div>
       {/* <RightNav /> */}

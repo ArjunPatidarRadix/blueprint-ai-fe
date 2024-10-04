@@ -50,13 +50,18 @@ const Goal: React.FC = () => {
 
   return (
     <div>
-      <div className="mb-4 flex justify-end mr-20">
+      <div className="mb-4 flex justify-end mr-4">
         {goalElements.length < 7 ? (
-          <Button label="+ Add" onClick={addStatement} type="button" />
+          <button
+            className="ml-auto px-4 py-2 bg-goldColor text-white rounded-md"
+            onClick={() => addStatement()}
+          >
+            Add +
+          </button>
         ) : null}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap gap-6">
         {goalElements.map((element, index) => (
           <Statement
             key={index}

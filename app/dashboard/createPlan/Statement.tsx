@@ -10,10 +10,10 @@ interface StatementProps {
 
 const Statement: React.FC<StatementProps> = ({ title, value, onViewClick }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-6">
+    <div className="flex flex-1 flex-wrap justify-center gap-6  hover:shadow-xl transition-shadow">
       <div
         style={{ backgroundColor: ColorEnum.LIGHT_GRAY_BLUE }}
-        className="relative w-96 shadow-sm  border-slate-200 rounded-lg p-3 pb-6"
+        className="relative w-full shadow-sm  border-slate-200 rounded-lg p-3 pb-6"
       >
         <div className="flex justify-center mb-1 mt-2"></div>
 

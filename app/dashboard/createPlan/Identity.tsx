@@ -59,16 +59,17 @@ const Identity: React.FC = () => {
 
   return (
     <div>
-      <div className="mb-4 flex justify-end mr-20">
+      <div className="mb-4 flex justify-end mr-4">
         {identityElements.length < 7 ? (
-          <Button
-            label="+ Add"
+          <button
+            className="ml-auto px-4 py-2 bg-goldColor text-white rounded-md"
             onClick={() => setIsModalOpen(true)}
-            type="button"
-          />
+          >
+            Add +
+          </button>
         ) : null}
       </div>
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {identityElements.map((element, index) => (
           <Statement
             key={index} // Ensure to add a unique key
